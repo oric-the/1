@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="img/flowers.png" type="image/x-icon">
+
+    <title>ILYSB 💙</title>
+
+<style>
+/* ================= SURAT ================= */
+.letter-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(5, 5, 20, 0.78);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s ease, visibility .35s ease;
+}
+
+.letter-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.letter-card {
+    position: relative;
+    box-sizing: border-box;
+    width: min(600px, 100%);
+    max-height: 88vh;
+    padding: 30px;
+    overflow-y: auto;
+    border-radius: 25px;
+    background: rgba(20, 20, 45, .97);
+    color: white;
+    box-shadow: 0 0 40px rgba(0,0,0,.55);
+    transform: translateY(30px) scale(.96);
+    transition: transform .35s ease;
+}
+
+.letter-overlay.show .letter-card {
+    transform: translateY(0) scale(1);
+}
+
+.letter-card h2 {
+    margin: 0 35px 22px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.letter-card .surat {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: left;
+    white-space: pre-line;
+    color: rgba(255,255,255,.92);
+}
+
+.letter-card .surat strong {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 21px;
+}
+
+.letter-card textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 110px;
+    margin-top: 25px;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 15px;
+    outline: none;
+    resize: vertical;
+    background: rgba(255,255,255,.08);
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.letter-card textarea::placeholder {
+    color: rgba(255,255,255,.55);
+}
+
+.close-letter {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,.10);
+    color: white;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.send-button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    border: 0;
+    border-radius: 15px;
+    background: #4f46e5;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .letter-overlay { padding: 12px; }
+    .letter-card {
+        max-height: 90vh;
+        padding: 25px 20px;
+        border-radius: 20px;
+    }
+    .letter-card h2 { font-size: 21px; }
+    .letter-card .surat {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+    .letter-card .surat strong { font-size: 18px; }
+}
+</style>
+
+</head>
+
+<body class="container">
+
+    <!-- Tombol surat -->
+    <a href="surat.html" class="icon-surat">💌</a>
+
+    <!-- MUSIK LANY - ILYSB -->
+    <audio id="bgMusic" preload="auto" loop>
+        <source src="LANY%20-%20ILYSB.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Tombol musik -->
+    <button id="musicButton" type="button"
+        style="position:fixed;right:20px;bottom:20px;z-index:99999;
+               padding:12px 18px;border:0;border-radius:25px;
+               cursor:pointer;font-size:15px;background:white;
+               box-shadow:0 4px 15px rgba(0,0,0,.25);">
+        🎵 Play Music
+    </button>
+
+    <!-- Tombol surat -->
+    <button class="icon-surat" id="openLetter" type="button">💌</button>
+
+    <!-- Surat muncul di halaman yang sama, sehingga musik tidak berhenti -->
+    <div class="letter-overlay" id="letterOverlay">
+        <div class="letter-card">
+            <button class="close-letter" id="closeLetter" type="button">✕</button>
+
+            <h2>HALOO SAYANGG</h2>
+
+            <div class="surat">
+Ini apa yaaa, surat cinta? ah engga ntar kamu katain lebay
+Sayanggg tau gaa? aku suka banget sama kamuuu, lebih dari yang kamu tauuu.
+Aku suka banget sama pemikiran kamuu, kalo denger kamu cerita tuh rasanya seneng,
+kagum, bangga bangett. Perasaan ini datang dari situ, aku suka banget sama kamu sayanggggg
+sayang banget aku jatuh cinta dor dor dorrr.
+
+Sayangg aku udah ceritain kekuranganku ke kamu,
+aku udah jujur soal diriku, aku cukup sadar diri dengan kondisiku,
+aku tau aku banyak kurang dan banyak gabisanya,
+aku cuma anak muda yang baru belajar hidup sendiri, tapiiiii.
+
+Tapi rasanya bodoh kalo aku ga bilang ini,
+aku sayang sama kamu, aku suka sama kamu,
+aku mau kamu sama aku, aku mau jalanin hari hariku yg ada kamunya,
+aku mau berbagi cerita ke kamu, mau jadi pendengar ceritamu,
+jadi tempat kamu ngeluh, aku mau kamu sayanggggg.
+
+<strong>ayo pacaran!!!</strong>
+            </div>
+
+            <textarea id="balasan" placeholder="Balas di sini..."></textarea>
+
+            <button class="send-button" id="sendButton" type="button">
+                Kirim 💌
+            </button>
+        </div>
+    </div>
+
+    <div class="night"></div>
+
+    <div class="flowers">
+
+        <!-- FLOWER 1 -->
+        <div class="flower flower--1">
+            <div class="flower__leafs flower__leafs--1">
+
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+
+                <div class="flower__white-circle"></div>
+
+                <div class="flower__light flower__light--1"></div>
+                <div class="flower__light flower__light--2"></div>
+                <div class="flower__light flower__light--3"></div>
+                <div class="flower__light flower__light--4"></div>
+                <div class="flower__light flower__light--5"></div>
+                <div class="flower__light flower__light--6"></div>
+                <div class="flower__light flower__light--7"></div>
+                <div class="flower__light flower__light--8"></div>
+
+            </div>
+
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+                <div class="flower__line__leaf flower__line__leaf--4"></div>
+                <div class="flower__line__leaf flower__line__leaf--5"></div>
+                <div class="flower__line__leaf flower__line__leaf--6"></div>
+            </div>
+        </div>
+
+        <!-- FLOWER 2 -->
+        <div class="flower flower--2">
+            <div class="flower__leafs flower__leafs--2">
+
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+
+                <div class="flower__white-circle"></div>
+
+                <div class="flower__light flower__light--1"></div>
+                <div class="flower__light flower__light--2"></div>
+                <div class="flower__light flower__light--3"></div>
+                <div class="flower__light flower__light--4"></div>
+                <div class="flower__light flower__light--5"></div>
+                <div class="flower__light flower__light--6"></div>
+                <div class="flower__light flower__light--7"></div>
+                <div class="flower__light flower__light--8"></div>
+
+            </div>
+
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+                <div class="flower__line__leaf flower__line__leaf--4"></div>
+            </div>
+        </div>
+
+        <!-- FLOWER 3 -->
+        <div class="flower flower--3">
+            <div class="flower__leafs flower__leafs--3">
+
+                <div class="flower__leaf flower__leaf--1"></div>
+                <div class="flower__leaf flower__leaf--2"></div>
+                <div class="flower__leaf flower__leaf--3"></div>
+                <div class="flower__leaf flower__leaf--4"></div>
+
+                <div class="flower__white-circle"></div>
+
+                <div class="flower__light flower__light--1"></div>
+                <div class="flower__light flower__light--2"></div>
+                <div class="flower__light flower__light--3"></div>
+                <div class="flower__light flower__light--4"></div>
+                <div class="flower__light flower__light--5"></div>
+                <div class="flower__light flower__light--6"></div>
+                <div class="flower__light flower__light--7"></div>
+                <div class="flower__light flower__light--8"></div>
+
+            </div>
+
+            <div class="flower__line">
+                <div class="flower__line__leaf flower__line__leaf--1"></div>
+                <div class="flower__line__leaf flower__line__leaf--2"></div>
+                <div class="flower__line__leaf flower__line__leaf--3"></div>
+                <div class="flower__line__leaf flower__line__leaf--4"></div>
+            </div>
+        </div>
+
+        <!-- EFEK TUMBUH -->
+        <div class="grow-ans" style="--d:1.2s">
+            <div class="flower__g-long">
+                <div class="flower__g-long__top"></div>
+                <div class="flower__g-long__bottom"></div>
+            </div>
+        </div>
+
+        <div class="growing-grass">
+            <div class="flower__grass flower__grass--1">
+                <div class="flower__grass--top"></div>
+                <div class="flower__grass--bottom"></div>
+
+                <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+
+                <div class="flower__grass__overlay"></div>
+            </div>
+        </div>
+
+        <div class="growing-grass">
+            <div class="flower__grass flower__grass--2">
+                <div class="flower__grass--top"></div>
+                <div class="flower__grass--bottom"></div>
+
+                <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+                <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+
+                <div class="flower__grass__overlay"></div>
+            </div>
+        </div>
+
+        <div class="grow-ans" style="--d:2.4s">
+            <div class="flower__g-right flower__g-right--1">
+                <div class="leaf"></div>
+            </div>
+        </div>
+
+        <div class="grow-ans" style="--d:2.8s">
+            <div class="flower__g-right flower__g-right--2">
+                <div class="leaf"></div>
+            </div>
+        </div>
+
+        <div class="grow-ans" style="--d:2.8s">
+            <div class="flower__g-front">
+
+                <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
+                    <div class="flower__g-front__leaf"></div>
+                </div>
+
+                <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2">
+                    <div class="flower__g-front__leaf"></div>
+                </div>
+
+                <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3">
+                    <div class="flower__g-front__leaf"></div>
+                </div>
+
+                <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4">
+                    <div class="flower__g-front__leaf"></div>
+                </div>
+
+                <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5">
+                    <div class="flower__g-front__leaf"></div>
+                </div>
+
+                <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6">
+                    <div class="flower__g-front__leaf"></div>
+                </div>
+
+                <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7">
+                    <div class="flower__g-front__leaf"></div>
+                </div>
+
+                <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8">
+                    <div class="flower__g-front__leaf"></div>
+                </div>
+
+                <div class="flower__g-front__line"></div>
+            </div>
+        </div>
+
+        <div class="grow-ans" style="--d:3.2s">
+            <div class="flower__g-fr">
+                <div class="leaf"></div>
+
+                <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
+                <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
+                <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
+                <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
+                <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
+                <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
+                <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
+                <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
+            </div>
+        </div>
+
+        <!-- RUMPUT PANJANG -->
+        <div class="long-g long-g--0">
+            <div class="grow-ans" style="--d:3s"><div class="leaf leaf--0"></div></div>
+            <div class="grow-ans" style="--d:2.2s"><div class="leaf leaf--1"></div></div>
+            <div class="grow-ans" style="--d:3.4s"><div class="leaf leaf--2"></div></div>
+            <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+        </div>
+
+        <div class="long-g long-g--1">
+            <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--0"></div></div>
+            <div class="grow-ans" style="--d:3.8s"><div class="leaf leaf--1"></div></div>
+            <div class="grow-ans" style="--d:4s"><div class="leaf leaf--2"></div></div>
+            <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--3"></div></div>
+        </div>
+
+        <div class="long-g long-g--2">
+            <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+            <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+            <div class="grow-ans" style="--d:4.4s"><div class="leaf leaf--2"></div></div>
+            <div class="grow-ans" style="--d:4.6s"><div class="leaf leaf--3"></div></div>
+        </div>
+
+        <div class="long-g long-g--3">
+            <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+            <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+            <div class="grow-ans" style="--d:3s"><div class="leaf leaf--2"></div></div>
+            <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+        </div>
+
+        <div class="long-g long-g--4">
+            <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+            <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+            <div class="grow-ans" style="--d:3s"><div class="leaf leaf--2"></div></div>
+            <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+        </div>
+
+        <div class="long-g long-g--5">
+            <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+            <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+            <div class="grow-ans" style="--d:3s"><div class="leaf leaf--2"></div></div>
+            <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+        </div>
+
+        <div class="long-g long-g--6">
+            <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--0"></div></div>
+            <div class="grow-ans" style="--d:4.4s"><div class="leaf leaf--1"></div></div>
+            <div class="grow-ans" style="--d:4.6s"><div class="leaf leaf--2"></div></div>
+            <div class="grow-ans" style="--d:4.8s"><div class="leaf leaf--3"></div></div>
+        </div>
+
+        <div class="long-g long-g--7">
+            <div class="grow-ans" style="--d:3s"><div class="leaf leaf--0"></div></div>
+            <div class="grow-ans" style="--d:3.2s"><div class="leaf leaf--1"></div></div>
+            <div class="grow-ans" style="--d:3.5s"><div class="leaf leaf--2"></div></div>
+            <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+        </div>
+
+    </div>
+
+    <script src="main.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const music = document.getElementById("bgMusic");
+    const musicButton = document.getElementById("musicButton");
+    const openLetter = document.getElementById("openLetter");
+    const closeLetter = document.getElementById("closeLetter");
+    const letterOverlay = document.getElementById("letterOverlay");
+    const sendButton = document.getElementById("sendButton");
+
+    // Musik hanya mulai setelah pengguna menekan tombol.
+    musicButton.addEventListener("click", async function () {
+        try {
+            if (music.paused) {
+                await music.play();
+            } else {
+                music.pause();
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Musik tidak bisa diputar. Pastikan file 'LANY - ILYSB.mp3' berada di folder 'musik.mp3'.");
+        }
+    });
+
+    music.addEventListener("play", function () {
+        musicButton.textContent = "⏸️ Pause Music";
+    });
+
+    music.addEventListener("pause", function () {
+        musicButton.textContent = "🎵 Play Music";
+    });
+
+    music.addEventListener("error", function () {
+        musicButton.textContent = "⚠️ Musik tidak ditemukan";
+    });
+
+    // Buka surat tanpa pindah halaman.
+    openLetter.addEventListener("click", function () {
+        letterOverlay.classList.add("show");
+    });
+
+    closeLetter.addEventListener("click", function () {
+        letterOverlay.classList.remove("show");
+    });
+
+    letterOverlay.addEventListener("click", function (event) {
+        if (event.target === letterOverlay) {
+            letterOverlay.classList.remove("show");
+        }
+    });
+
+    // Kirim balasan menggunakan Google Apps Script yang kamu berikan.
+    sendButton.addEventListener("click", function () {
+        const isi = document.getElementById("balasan").value.trim();
+
+        if (!isi) {
+            alert("Tulis balasan dulu yaa 💙");
+            return;
+        }
+
+        fetch("https://script.google.com/macros/s/AKfycbwYR0GsrCS9uBtO_rVTcxOFSE5lTypURQ2kUp-zUft6vX5BQrpvVsQOL9OCylAiKzP_/exec", {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify({ pesan: isi }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        alert("Balasan terkirim 💙");
+        document.getElementById("balasan").value = "";
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UNTUK SAYANGKU</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #0c0c1d, #1a1a40);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+/* Card utama */
+.card {
+  width: 350px;
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+/* Judul */
+.card h2 {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* Isi surat */
+.surat {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+/* Textarea */
+textarea {
+  width: 100%;
+  height: 90px;
+  border-radius: 12px;
+  border: none;
+  padding: 10px;
+  outline: none;
+  resize: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+/* Button */
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  background: #4f46e5;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #6366f1;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+  <h2>HALOO SAYANGG</h2>
+
+  <p class="surat">
+    Ini apa yaaa, surat cinta? ah engga ntar kamu katain lebay 
+    Sayanggg tau gaa? aku suka banget sama kamuuu, lebih dari yang kamu tauuu.
+    Aku suka banget sama pemikiran kamuu, kalo denger kamu cerita tuh rasanya seneng,
+    kagum, bangga bangett. Perasaan ini datang dari situ, aku suka banget sama kamu sayanggggg
+    sayang banget aku jatuh cinta dor dor dorrr. Sayangg aku udah ceritain kekuranganku ke kamu,
+    aku udah jujur soal diriku, aku cukup sadar diri dengan kondisiku, aku tau aku banyak kurang dan
+    banyak gabisanya, aku cuma anak muda yang baru belajar hidup sendiri, tapiiiii.
+    Tapi rasanya bodoh kalo aku ga bilang ini, aku sayang sama kamu, aku suka sama kamu,
+    aku mau kamu sama aku, aku mau jalanin hari hariku yg ada kamunya,
+    aku mau berbagi cerita ke kamu, mau jadi pendengar ceritamu, jadi tempat kamu ngeluh,
+    aku mau kamu sayanggggg, ayo pacaran!!!
+  </p>
+
+  <textarea id="balasan" placeholder="Balas di sini..."></textarea>
+
+  <button onclick="kirim()">Kirim</button>
+</div>
+
+<script>
+function kirim() {
+  const isi = document.getElementById("balasan").value;
+
+  fetch("https://script.google.com/macros/s/AKfycbwYR0GsrCS9uBtO_rVTcxOFSE5lTypURQ2kUp-zUft6vX5BQrpvVsQOL9OCylAiKzP_/exec", {
+    method: "POST",
+    mode: "no-cors", // <-- penting
+    body: JSON.stringify({ pesan: isi }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+
+  alert("Balasan terkirim");
+}
+</script>
+
+</body>
+</html>
